@@ -30,7 +30,7 @@
     "url": "git://github.com/carrot/jade-loader.git"
   },
   "scripts": {
-    "test": "mocha -R spec",
+    "test": "mocha --require babel-core/register",
     "build": "babel src --out-dir lib"
   },
   "standard": {
