@@ -5,21 +5,21 @@ import MyParser from './parser'
 
 export default function (source) {
   if (this.cacheable) this.cacheable()
-  var callback = this.async()
-  var req = loaderUtils.getRemainingRequest(this).replace(/^!/, '')
-  var query = loaderUtils.parseQuery(this.query)
-  var stringifyLoader = path.join(__dirname, 'stringify.loader.js')
-  var loaderContext = this
-  var loadModule = this.loadModule
-  var resolve = this.resolve
-  var missingFileMode = false
+  let callback = this.async()
+  let req = loaderUtils.getRemainingRequest(this).replace(/^!/, '')
+  let query = loaderUtils.parseQuery(this.query)
+  let stringifyLoader = path.join(__dirname, 'stringify.loader.js')
+  let loaderContext = this
+  let loadModule = this.loadModule
+  let resolve = this.resolve
+  let missingFileMode = false
 
   this.fileContents = {}
   this.filePaths = {}
   this.getFileContent = function (context, request) {
     request = loaderUtils.urlToRequest(request, query.root)
-    var baseRequest = request
-    var isSync = true
+    let baseRequest = request
+    let isSync = true
     let filePath = loaderContext.filePaths[`${context} ${request}`]
     if (filePath) {
       return filePath
@@ -67,8 +67,9 @@ export default function (source) {
 
   run()
   function run () {
+    let tmplFunc
     try {
-      var tmplFunc = jade.compile(source, {
+      tmplFunc = jade.compile(source, {
         parser: loadModule ? MyParser : undefined,
         filename: req,
         self: query.self,

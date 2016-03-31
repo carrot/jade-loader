@@ -4,8 +4,8 @@ import nodes from 'jade/lib/nodes'
 import utils from 'jade/lib/utils'
 import path from 'path'
 
-var loaderContext, callback
-var dirname = path.dirname
+let loaderContext, callback
+let dirname = path.dirname
 
 export default class Parser extends JadeParser {
   constructor (str, filename, options) {
@@ -59,7 +59,7 @@ export default class Parser extends JadeParser {
       return super.parseInclude.call(this)
     }
 
-    var tok = this.expect('include')
+    let tok = this.expect('include')
 
     let request = tok.val.trim()
     let context = dirname(this.filename.split('!').pop())
@@ -95,7 +95,7 @@ export default class Parser extends JadeParser {
     parser.mixins = this.mixins
 
     this.context(parser)
-    var ast = parser.parse()
+    let ast = parser.parse()
     this.context()
     ast.filename = path
 
