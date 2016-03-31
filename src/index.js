@@ -5,25 +5,26 @@ import MyParser from './parser'
 
 export default function (source) {
   if (this.cacheable) this.cacheable()
+  const stringifyLoader = path.join(__dirname, 'stringify.loader.js')
+  const query = loaderUtils.parseQuery(this.query)
+  const loadModule = this.loadModule
+  const resolve = this.resolve
+
   let callback = this.async()
   let req = loaderUtils.getRemainingRequest(this).replace(/^!/, '')
-  let query = loaderUtils.parseQuery(this.query)
-  let stringifyLoader = path.join(__dirname, 'stringify.loader.js')
   let loaderContext = this
-  let loadModule = this.loadModule
-  let resolve = this.resolve
   let missingFileMode = false
 
   this.fileContents = {}
   this.filePaths = {}
   this.getFileContent = function (context, request) {
     request = loaderUtils.urlToRequest(request, query.root)
-    let baseRequest = request
-    let isSync = true
-    let filePath = loaderContext.filePaths[`${context} ${request}`]
+    const baseRequest = request
+    const filePath = loaderContext.filePaths[`${context} ${request}`]
     if (filePath) {
       return filePath
     }
+    let isSync = true
     resolve(context, `${request}.jade`, (err, _request) => {
       if (err) {
         resolve(context, request, (err2, _request) => {

@@ -37,13 +37,12 @@ export default class Parser extends JadeParser {
       return super.parseExtends.call(this)
     }
 
-    let request = this.expect('extends').val.trim()
-    let context = dirname(this.filename.split('!').pop())
+    const request = this.expect('extends').val.trim()
+    const context = dirname(this.filename.split('!').pop())
+    const path = loaderContext.getFileContent(context, request)
+    const str = loaderContext.fileContents[path]
 
-    let path = loaderContext.getFileContent(context, request)
-    let str = loaderContext.fileContents[path]
     let parser = new this.constructor(str, path, this.options)
-
     parser.blocks = this.blocks
     parser.contexts = this.contexts
     this.extending = parser
@@ -59,11 +58,10 @@ export default class Parser extends JadeParser {
       return super.parseInclude.call(this)
     }
 
-    let tok = this.expect('include')
-
-    let request = tok.val.trim()
-    let context = dirname(this.filename.split('!').pop())
-    let path = loaderContext.getFileContent(context, request)
+    const tok = this.expect('include')
+    const request = tok.val.trim()
+    const context = dirname(this.filename.split('!').pop())
+    const path = loaderContext.getFileContent(context, request)
     let str = loaderContext.fileContents[path]
 
     // has-filter
@@ -82,7 +80,7 @@ export default class Parser extends JadeParser {
 
     // non-jade
     if (path.substr(-5) !== '.jade') {
-      let nonJadeStr = str.replace(/\r/g, '')
+      const nonJadeStr = str.replace(/\r/g, '')
       return new nodes.Literal(nonJadeStr)
     }
 
