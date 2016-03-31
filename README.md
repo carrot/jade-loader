@@ -2,7 +2,7 @@
 
 ## Usage
 
-``` javascript
+```javascript
 var template = require("jade!./file.jade");
 // => returns file.jade content as template function
 ```
@@ -13,7 +13,7 @@ var template = require("jade!./file.jade");
 
 Try to use `require` for all your embedded resources, to process them with webpack.
 
-``` jade
+```jade
 div
   img(src=require("./my/image.png"))
 ```
@@ -22,4 +22,4 @@ You need to configure loaders for these filetypes too. (Take a look at the [file
 
 ## License
 
-MIT (http://www.opensource.org/licenses/mit-license.php)
+MIT (<http://www.opensource.org/licenses/mit-license.php>)
