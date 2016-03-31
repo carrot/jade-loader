@@ -1,25 +1,17 @@
-# jade loader for webpack
+# jade loader
+A [webpack](http://webpack.io) loader for use within [roots-mini](https://github.com/carrot/roots-mini)
 
 ## Usage
 
-```javascript
-var template = require("jade!./file.jade");
-// => returns file.jade content as template function
+```js
+const template = require('jade!./file.jade')
+// => returns file.jade content as string of JSON (via JSON.stringify)
+// roots-mini uses JSON.parse() internally to decode
 ```
 
-[Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
+[Webpack Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
 
-### Embedded resources
+## License & Acknowledgements
 
-Try to use `require` for all your embedded resources, to process them with webpack.
-
-```jade
-div
-  img(src=require("./my/image.png"))
-```
-
-You need to configure loaders for these filetypes too. (Take a look at the [file-loader](https://github.com/webpack/file-loader).)
-
-## License
-
-MIT (<http://www.opensource.org/licenses/mit-license.php>)
+- License: [MIT](http://www.opensource.org/licenses/mit-license.php)
+- This project was based of the original work of [@webpack/jade-loader](https://github.com/webpack/jade-loader)
