@@ -1,7 +1,7 @@
 {
   "name": "roots-jade-loader",
   "description": "jade loader module for webpack. made for use within roots-mini",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Carrot Creative",
   "dependencies": {
     "babel-core": "^6.7.4",
