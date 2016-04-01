@@ -1,4 +1,4 @@
-# jade loader
+# roots jade loader
 A [webpack](http://webpack.io) loader for use within [roots-mini](https://github.com/carrot/roots-mini)
 
 ## Usage

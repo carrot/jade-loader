@@ -1,5 +1,5 @@
 {
-  "name": "jade-loader",
+  "name": "roots-jade-loader",
   "description": "jade loader module for webpack. made for use within roots-mini",
   "version": "0.0.1",
   "author": "Carrot Creative",
@@ -31,7 +31,8 @@
   },
   "scripts": {
     "test": "mocha --require babel-core/register",
-    "build": "babel src --out-dir lib"
+    "build": "mv lib src && babel src --out-dir lib",
+    "unbuild": "rm -rf lib && mv src lib"
   },
   "standard": {
     "parser": "babel-eslint"
